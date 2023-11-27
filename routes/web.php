@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HelloWorldController;
+use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\UsersController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,9 +19,13 @@ use App\Http\Controllers\HelloWorldController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/hello', [HelloWorldController::class, 'show']);
-
 Auth::routes();
+
+
+Route::middleware(['auth'])->group(function() {
+    Route::get('/profil', [ProfilController::class, 'show']);
+    Route::get('/users', [UsersController::class, 'show']);
+
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
