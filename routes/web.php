@@ -24,8 +24,10 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function() {
     Route::get('/profil', [ProfilController::class, 'show']);
-    Route::get('/users', [UsersController::class, 'show']);
 
+    Route::middleware(['can:isAdmin'])->group(function() {
+        Route::get('/users', [UsersController::class, 'show']);
+    });
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

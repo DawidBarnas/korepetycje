@@ -112,6 +112,7 @@
                                 <span class="hide-menu">Profil</span>
                             </a>
                         </li>
+                        @can('isAdmin')
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/users"
                                 aria-expanded="false">
@@ -119,6 +120,7 @@
                                 <span class="hide-menu">Uźytkownicy</span>
                             </a>
                         </li>
+                        @endcan
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.html"
                                 aria-expanded="false">
