@@ -19,7 +19,7 @@
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th class="border-top-0">#</th>
+                                            <th class="border-top-0">Id</th>
                                             <th class="border-top-0">Imie</th>
                                             <th class="border-top-0">Nazwisko</th>
                                             <th class="border-top-0">E-mail</th>
@@ -44,6 +44,11 @@
                                                     @else
                                                         Inna rola
                                                     @endif    
+                                                </td>
+                                                <td>
+                                                <a href="users/delete/{{ $user->id }}" onclick="return confirm('Czy na pewno chcesz usunąć tego użytkownika?')">
+                                                    <button type="button" class="btn btn-danger">Usuń</button>
+                                                </a>
                                                 </td>
                                             </tr>
                                         @endforeach

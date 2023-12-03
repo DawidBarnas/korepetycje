@@ -27,6 +27,8 @@ Route::middleware(['auth'])->group(function() {
 
     Route::middleware(['can:isAdmin'])->group(function() {
         Route::get('/users', [UsersController::class, 'index']);
+        Route::get('users/delete/{id}', [UsersController::class, 'delete']);
+        
     });
 });
 

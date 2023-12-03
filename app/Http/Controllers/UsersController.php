@@ -12,10 +12,17 @@ class UsersController extends Controller
      * Display a listing of the resource.
      */
     public function index()
+{
+    return view('users', [
+        'users' => User::where('role', '!=', 'admin')->get(),
+    ]);
+}
+
+    public function delete($id)
     {
-        return view('users',[
-            'users' => User::all(),
-        ]);
+        $users = User::find($id);
+        $users->delete();
+        return redirect('users');
     }
 
     /**
