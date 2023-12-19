@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 class ProfilController extends Controller
 {
     public function show() {
-        return view('profil');
+        $userData = auth()->user();
+
+        return view('profil', compact('userData'));
     }
 }

@@ -75,9 +75,11 @@
                     <!-- ============================================================== -->
                     <li>
                         <a class="profile-pic" href="/profil">
-                            <img src="plugins/images/users/varun.jpg" alt="user-img" width="36"
-                                class="img-circle"><span class="text-white font-medium">{{ Auth::user()->name }}</span></a>
+                            <img src="{{ asset('plugins/images/users/varun.jpg') }}" alt="user-img" width="36" class="img-circle">
+                            <span class="text-white font-medium">{{ Auth::user()->name }}</span>
+                        </a>
                     </li>
+
                     <!-- ============================================================== -->
                     <!-- User profile and search -->
                     <!-- ============================================================== -->
@@ -122,19 +124,19 @@
                         </li>
                         @endcan
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/find-tutor"
                                 aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
                                 <span class="hide-menu">Znajdź korepetytora</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
+                        <!-- <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="fontawesome.html"
                                 aria-expanded="false">
                                 <i class="fa fa-font" aria-hidden="true"></i>
                                 <span class="hide-menu">Harmonogram</span>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="text-center p-20 upgrade-btn">
                             
                             <a class="btn d-grid btn-danger text-white" href="{{ route('logout') }}"
