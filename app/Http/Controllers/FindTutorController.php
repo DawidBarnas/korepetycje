@@ -13,9 +13,9 @@ class FindTutorController extends Controller
      */
     public function index()
     {
-        $tutors = User::where('role', 'tutor')->get();
-        // dd($tutors); // Debug
-        return view('find-tutor', ['tutors' => $tutors]);
+        $tutors = DB::table('users')->where('role', 'tutor')->get();
+        $tutors = User::where('role', 'tutor')->paginate(8);
+        return view('find-tutor', compact('tutors'));
     }
 
     /**

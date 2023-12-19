@@ -119,7 +119,7 @@
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/users"
                                 aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
-                                <span class="hide-menu">Uźytkownicy</span>
+                                <span class="hide-menu">Użytkownicy</span>
                             </a>
                         </li>
                         @endcan
