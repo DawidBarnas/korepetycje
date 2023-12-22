@@ -28,6 +28,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/profil', [ProfilController::class, 'show']);
     Route::get('/find-tutor', [FindTutorController::class, 'index']);
     Route::get('/tutor-profile/{id}', [TutorController::class, 'showProfile'])->name('showTutorProfile');
+    Route::post('/rate-tutor/{id}', [TutorController::class, 'rateTutor'])->name('rate.tutor');
 
     Route::middleware(['can:isAdmin'])->group(function() {
         Route::get('/users', [UsersController::class, 'index']);
