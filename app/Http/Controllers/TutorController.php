@@ -12,44 +12,45 @@ class TutorController extends Controller
     {
         $tutor = User::findOrFail($id);
         $ratings = $tutor->ratings; // Użyj relacji, aby pobrać oceny tego korepetytora
+        $comments = Rating::where('tutor_id', $id)->get();
 
         // Sprawdź, czy użytkownik już ocenił tego korepetytora
         $hasRated = Rating::where('tutor_id', $id)
             ->where('user_id', auth()->user()->id)
             ->exists();
 
-        return view('tutor-profile', compact('tutor', 'ratings', 'hasRated'));
+        return view('tutor-profile', compact('tutor', 'ratings', 'comments', 'hasRated'));
     }
 
 
     public function rateTutor(Request $request, $id)
-{
-    $request->validate([
-        'rating' => 'required|integer|min:1|max:5',
-        'comment' => 'nullable|string|max:255',
-    ]);
-
-    $tutor = User::findOrFail($id);
-
-    // Sprawdzenie, czy użytkownik już ocenił tego korepetytora
-    $existingRating = Rating::where('tutor_id', $id)
-        ->where('user_id', auth()->user()->id)
-        ->first();
-
-    if (!$existingRating) {
-        // Dodanie nowej oceny
-        Rating::create([
-            'tutor_id' => $id,
-            'user_id' => auth()->user()->id,
-            'rating' => $request->input('rating'),
-            'comment' => $request->input('comment'),
+    {
+        $request->validate([
+            'rating' => 'required|integer|min:1|max:5',
+            'comment' => 'nullable|string|max:255',
         ]);
 
-        return redirect()->back()->with('success', 'Dziękujemy za ocenę korepetytora.');
-    } else {
-        return redirect()->back()->with('error', 'Już oceniłeś(aś) tego korepetytora.');
+        $tutor = User::findOrFail($id);
+
+        // Sprawdzenie, czy użytkownik już ocenił tego korepetytora
+        $existingRating = Rating::where('tutor_id', $id)
+            ->where('user_id', auth()->user()->id)
+            ->first();
+
+        if (!$existingRating) {
+            // Dodanie nowej oceny
+            Rating::create([
+                'tutor_id' => $id,
+                'user_id' => auth()->user()->id,
+                'rating' => $request->input('rating'),
+                'comment' => $request->input('comment'),
+            ]);
+
+            return redirect()->back()->with('success', 'Dziękujemy za ocenę.');
+        } else {
+            return redirect()->back()->with('error', 'Już oceniłeś(aś) tego korepetytora.');
+        }
     }
-}
 
 
 }
