@@ -14,6 +14,9 @@
                 <p>E-mail: {{ $tutor->email }}</p>
                 <!-- Dodaj więcej informacji, jeśli to konieczne -->
             </div>
+            <a href="{{ route('showTutorCalendar', $tutor->id) }}">
+                <button type="button" class="btn btn-primary">Wyświetl Dostępne terminy</button>
+            </a>
 
             @if (!$hasRated)
                 <!-- Dodaj warunek, aby sprawdzić, czy użytkownik jeszcze nie ocenił tego korepetytora -->
@@ -39,6 +42,7 @@
                 <p>Już oceniłeś(aś) tego korepetytora.</p>
             @endif
 
+
             <div class="row d-flex ">
                 <div class="col-md-12 col-lg-10">
                     <div class="card text-dark">
@@ -52,7 +56,7 @@
                                 @foreach ($comments as $comment)
                                     <div class="d-flex flex-start mb-4 border-bottom">
                                         <img class="rounded-circle shadow-1-strong me-3"
-                                            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp"
+                                            src="{{ asset('plugins/images/users/1.jpg') }}"
                                             alt="avatar" width="60" height="60" />
                                         <div>
                                             <h6 class="fw-bold mb-1">{{ $comment->user->name }}  wystawił ocenę: {{ $comment->rating }}</h6>

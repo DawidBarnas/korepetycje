@@ -24,6 +24,7 @@
                                             <th class="border-top-0">Nazwisko</th>
                                             <th class="border-top-0">E-mail</th>
                                             <th class="border-top-0">Rola</th>
+                                            <th class="border-top-0">Utworzono</th>
                                             <th class="border-top-0">Akcja</th>
                                         </tr>
                                     </thead>
@@ -45,6 +46,7 @@
                                                         Inna rola
                                                     @endif    
                                                 </td>
+                                                <td>{{ $user->created_at }}</td>
                                                 <td>
                                                 <a href="users/delete/{{ $user->id }}" onclick="return confirm('Czy na pewno chcesz usunąć tego użytkownika?')">
                                                     <button type="button" class="btn btn-danger">Usuń</button>

@@ -8,7 +8,7 @@
         <div class="white-box d-flex">
             
             <div class="col-md-3 border-right">
-                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="plugins/images/users/varun.jpg"><span class="font-weight-bold">{{ Auth::user()->name }}</span><span class="text-black-50">{{ Auth::user()->email }}</span><span> </span></div>
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="{{ asset('plugins/images/users/1.jpg') }}"><span class="font-weight-bold">{{ Auth::user()->name }}</span><span class="text-black-50">{{ Auth::user()->email }}</span><span> </span></div>
             </div>
             <div class="col-md-9 border-right">
                 <div class="p-5 py-7">

@@ -75,7 +75,7 @@
                     <!-- ============================================================== -->
                     <li>
                         <a class="profile-pic" href="/profil">
-                            <img src="{{ asset('plugins/images/users/varun.jpg') }}" alt="user-img" width="36" class="img-circle">
+                            <img src="{{ asset('plugins/images/users/1.jpg') }}" alt="user-img" width="36" class="img-circle">
                             <span class="text-white font-medium">{{ Auth::user()->name }}</span>
                         </a>
                     </li>
@@ -128,6 +128,20 @@
                                 aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
                                 <span class="hide-menu">Znajdź korepetytora</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/tutor-availability"
+                                aria-expanded="false">
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <span class="hide-menu">Dodaj termin korepetycji</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/your-schedule"
+                                aria-expanded="false">
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <span class="hide-menu">Twój harmonogram</span>
                             </a>
                         </li>
                         <!-- <li class="sidebar-item">
