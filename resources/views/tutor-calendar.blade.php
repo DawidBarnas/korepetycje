@@ -49,6 +49,7 @@
         var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
             dayMaxEventRows: 2,
+            locale: 'pl',
             timeFormat: 'H:mm',
             events: [
                 @foreach($availableDatesandHours as $availability)
@@ -67,6 +68,7 @@
             },
             timeFormat: 'H:mm',
             contentHeight: 'auto',
+            
         });
 
         calendarEl.style.maxWidth = '100%';

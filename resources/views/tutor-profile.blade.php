@@ -3,20 +3,48 @@
 @section('contentnav')
 <div class="row">
     <div class="col-md-12 col-lg-12 col-sm-12">
+    <div class="white-box d-flex">
+            
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="{{ asset('plugins/images/users/1.jpg') }}"><span class="font-weight-bold">{{ $tutor->name }}</span><span class="text-black-50">{{ $tutor->email }}</span><span> </span></div>
+            </div>
+            <div class="col-md-9 border-right">
+                <div class="p-5 py-7">
+                <div class="d-md-flex mb-3">
+                    <h3 class="box-title mb-0">Profil Korepetytora</h3>
+                </div>
+                    <table class="table table-hover">
+                                    
+                                    <tbody>
+                                            <tr>
+                                                <td>Imię</td>
+                                                <td>{{ $tutor->name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nazwisko</td>
+                                                <td>{{ $tutor->surname }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Email</td>
+                                                <td>{{ $tutor->email }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Utworzono</td>
+                                                <td>{{ $tutor->created_at }}</td>
+                                            </tr>
+                                            
+                                    </tbody>
+                                </table>
+                                <a href="{{ route('showTutorCalendar', $tutor->id) }}">
+                                    <button type="button" class="btn btn-primary">Wyświetl Dostępne terminy</button>
+                                </a>
+                </div>
+            </div>
+        
+        </div>
         <div class="white-box">
-            <div class="d-md-flex mb-3">
-                <h3 class="box-title mb-0">Profil Korepetytora</h3>
-            </div>
-            <div>
-                <p>ID: {{ $tutor->id }}</p>
-                <p>Imię: {{ $tutor->name }}</p>
-                <p>Nazwisko: {{ $tutor->surname }}</p>
-                <p>E-mail: {{ $tutor->email }}</p>
-                <!-- Dodaj więcej informacji, jeśli to konieczne -->
-            </div>
-            <a href="{{ route('showTutorCalendar', $tutor->id) }}">
-                <button type="button" class="btn btn-primary">Wyświetl Dostępne terminy</button>
-            </a>
+            
+            
 
             @if (!$hasRated)
                 <!-- Dodaj warunek, aby sprawdzić, czy użytkownik jeszcze nie ocenił tego korepetytora -->
