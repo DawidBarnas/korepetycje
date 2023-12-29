@@ -34,6 +34,8 @@ Route::middleware(['auth'])->group(function() {
     Route::post('/rate-tutor/{id}', [TutorController::class, 'rateTutor'])->name('rate.tutor');
     Route::get('/tutor-calendar/{id}', [TutorCalendarController::class, 'show'])->name('showTutorCalendar');
     Route::get('/your-schedule', [YourScheduleController::class, 'index']);
+    Route::post('/save-selected-date-time', [TutorCalendarController::class, 'saveSelectedDateTime'])->name('saveSelectedDateTime');
+    Route::post('/save-selected-datetime', [TutorCalendarController::class, 'saveSelectedDateTime'])->name('save-selected-datetime');
 
 
 

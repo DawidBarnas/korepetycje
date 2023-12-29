@@ -144,13 +144,6 @@
                                 <span class="hide-menu">Twój harmonogram</span>
                             </a>
                         </li>
-                        <!-- <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="fontawesome.html"
-                                aria-expanded="false">
-                                <i class="fa fa-font" aria-hidden="true"></i>
-                                <span class="hide-menu">Harmonogram</span>
-                            </a>
-                        </li> -->
                         <li class="text-center p-20 upgrade-btn">
                             
                             <a class="btn d-grid btn-danger text-white" href="{{ route('logout') }}"
@@ -214,6 +207,8 @@
     <script src="{{ asset('plugins/bower_components/chartist/dist/chartist.min.js') }}"></script>
     <script src="{{ asset('plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js') }}"></script>
     <script src="{{ asset('js/pages/dashboards/dashboard1.js') }}"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
+    
 </body>
 
 </html>

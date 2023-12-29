@@ -20,7 +20,7 @@
         <div class="col-md-12 col-lg-12 col-sm-12">
             <div class="white-box">
                 <div class="d-md-flex mb-3">
-                    <h3 class="box-title mb-0">Twoje terminy</h3>
+                    <h3 class="box-title mb-0">Terminy zajęć</h3>
                     
                 </div>
                 <div class="table-responsive">
@@ -31,7 +31,7 @@
                                             <th class="border-top-0">Data</th>
                                             <th class="border-top-0">Godzina</th>
                                             <th class="border-top-0">Zarezerwował</th>
-                                            <th class="border-top-0">Email</th>
+                                            <th class="border-top-0">E-mail</th>
                                             <th class="border-top-0">Akcja</th>
                                         </tr>
                                     </thead>
@@ -45,7 +45,7 @@
                                                 @if(empty($tutorSchedule->user_id))
                                                     Wolny Termin
                                                 @else
-                                                    {{ $tutorSchedule->user_id }}
+                                                    {{ $tutorSchedule->name }}
                                                 @endif
                                                 </td>
                                                 <td> 
@@ -73,16 +73,60 @@
 @endcan
 
 @can('isUser')
-    <div class="row">
+<div class="row">
         <div class="col-md-12 col-lg-12 col-sm-12">
             <div class="white-box">
                 <div class="d-md-flex mb-3">
-                    <h3 class="box-title mb-0">Profil Korepetytora</h3>
+                    <h3 class="box-title mb-0">Terminy zajęć</h3>
+                    
                 </div>
-                <!-- INPUT Z KALENDARZA -->
+                <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            
+                                            <th class="border-top-0">Data</th>
+                                            <th class="border-top-0">Godzina</th>
+                                            <th class="border-top-0">Korepetytor</th>
+                                            <th class="border-top-0">E-mail</th>
+                                            <th class="border-top-0">Akcja</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($userSchedules as $userSchedule)
+                                            <tr>
+                                                
+                                                <td>{{ $userSchedule->date }}</td>
+                                                <td>{{ $userSchedule->hour }}</td>
+                                                <td>
+                                                @if(empty($userSchedule->tutor_id))
+                                                    Wolny Termin
+                                                @else
+                                                    {{ $userSchedule->name }}
+                                                @endif
+                                                </td>
+                                                <td> 
+                                                    @if(empty($userSchedule->tutor_id))
+                                                        -
+                                                    @else
+                                                        {{ $userSchedule->email }}
+                                                    @endif 
+                                                </td>
+                                                <td>
+                                                <a href="userSchedule/delete/{{ $userSchedule->id }}" onclick="return confirm('Czy na pewno chcesz usunąć termin?')">
+                                                    <button type="button" class="btn btn-danger">Usuń</button>
+                                                </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                    
+                                </table>
+                                {{ $userSchedules->links() }}
+                            </div>
             </div>
         </div>
-    </div>                 
+    </div>                                   
 @endcan
 
 @endsection('contentnav')
