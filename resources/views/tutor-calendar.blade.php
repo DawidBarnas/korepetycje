@@ -50,6 +50,11 @@
             initialView: 'dayGridMonth',
             dayMaxEventRows: 2,
             locale: 'pl',
+            validRange: function (nowDate) {
+                    return {
+                        start: nowDate
+                    };
+                },
             timeFormat: 'H:mm',
             events: [
                 @foreach($availableDatesandHours as $availability)

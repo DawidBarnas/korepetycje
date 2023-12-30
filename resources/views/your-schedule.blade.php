@@ -1,6 +1,7 @@
 @extends('layouts.nav')
 
 @section('contentnav')
+<!-- TUTOR -->
     <div class="row">
         <div class="col-md-12 col-lg-12 col-sm-12">
             
@@ -41,6 +42,11 @@
                 initialView: 'dayGridMonth',
                 dayMaxEventRows: 2,
                 locale: 'pl',
+                validRange: function (nowDate) {
+                    return {
+                        start: nowDate
+                    };
+                },
                 timeFormat: 'H:mm',
                 events: [
                     @foreach($tutorSchedules as $tutorSchedule)
@@ -76,9 +82,9 @@
                 eventClick: function (info) {
                     // Wywołuje się po kliknięciu na wydarzenie w kalendarzu
                     var content = `
-                        <h4>ID: ${info.event.extendedProps.tutorScheduleId}</h4>
-                        <p>Data: ${info.event.start.toLocaleString()}</p>
-                        <p>Godzina: ${info.event.start.toLocaleTimeString()}</p>
+                    
+                        
+                        <p>Data i godzina: ${info.event.start.toLocaleString()}</p>
                         <p>Zarezerwował: ${info.event.extendedProps.userName}</p>
                         <p>E-mail: ${info.event.extendedProps.userEmail}</p>
                     `;

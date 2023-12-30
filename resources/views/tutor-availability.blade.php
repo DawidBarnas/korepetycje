@@ -85,6 +85,7 @@
     var picker = new Pikaday({
         field: document.getElementById('datepicker'),
         format: 'YYYY-MM-DD',
+        minDate: new Date(),  // Ustawienie minimalnej daty na dzisiejszą datę
         onSelect: function(date) {
             // Zresetuj zaznaczone godziny przy zmianie daty
             selectedHours = [];
@@ -96,9 +97,38 @@
         i18n: {
             previousMonth: 'Poprzedni miesiąc',
             nextMonth: 'Następny miesiąc',
-            months: moment.months(),
-            weekdays: moment.weekdays(),
-            weekdaysShort: moment.weekdaysShort()
+            months: [
+                'Styczeń',
+                'Luty',
+                'Marzec',
+                'Kwiecień',
+                'Maj',
+                'Czerwiec',
+                'Lipiec',
+                'Sierpień',
+                'Wrzesień',
+                'Październik',
+                'Listopad',
+                'Grudzień'
+            ],
+            weekdays: [
+                'Niedziela',
+                'Poniedziałek',
+                'Wtorek',
+                'Środa',
+                'Czwartek',
+                'Piątek',
+                'Sobota'
+            ],
+            weekdaysShort: [
+                'Niedz.',
+                'Pon.',
+                'Wt.',
+                'Śr.',
+                'Czw.',
+                'Pt.',
+                'Sob.'
+            ]
         }
     });
 

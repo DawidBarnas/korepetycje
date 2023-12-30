@@ -130,6 +130,7 @@
                                 <span class="hide-menu">Dodaj termin korepetycji</span>
                             </a>
                         </li>
+                        <!-- TUTOR -->
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/your-schedule"
                                 aria-expanded="false">
