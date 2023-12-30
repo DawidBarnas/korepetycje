@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\TutorAvailability;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
+
 
 class YourScheduleController extends Controller
 {
@@ -13,19 +15,12 @@ class YourScheduleController extends Controller
     {
         $id = Auth::user()->id;
 
-        $userSchedules = DB::table('tutor_availabilities')
-            ->join('users', 'tutor_availabilities.tutor_id', '=', 'users.id')
-            ->select('tutor_availabilities.*', 'users.name', 'users.email')
-            ->where('tutor_availabilities.user_id', $id)
-            ->paginate(5);
 
-        $tutorSchedules = DB::table('tutor_availabilities')
-            ->join('users', 'tutor_availabilities.user_id', '=', 'users.id')
-            ->select('tutor_availabilities.*', 'users.name', 'users.email')
-            ->where('tutor_availabilities.tutor_id', $id)
-            ->paginate(5);
+        $tutorSchedules = TutorAvailability::with('user') 
+        ->where('tutor_id', auth()->user()->id)
+        ->get();
 
-        return view('your-schedule', compact('tutorSchedules','userSchedules'));
+        return view('your-schedule', compact('tutorSchedules'));
     }
 
     public function delete($id)

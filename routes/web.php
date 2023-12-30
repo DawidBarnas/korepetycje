@@ -43,6 +43,7 @@ Route::middleware(['auth'])->group(function() {
         Route::post('/tutor/availability', [TutorAvailabilityController::class, 'checkAvailability'])->name('tutor.availability');
         Route::get('/tutor-availability', [TutorAvailabilityController::class, 'index']);
         Route::get('tutorSchedule/delete/{id}', [YourScheduleController::class, 'delete']);
+        
     });
 
     Route::middleware(['can:isAdmin'])->group(function() {
