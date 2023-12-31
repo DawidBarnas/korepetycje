@@ -13,6 +13,7 @@ class YourScheduleController extends Controller
 {
     public function index()
     {
+        // TUTOR
         $id = Auth::user()->id;
 
 
@@ -25,12 +26,43 @@ class YourScheduleController extends Controller
 
     public function delete($id)
     {
-        // Znajdź użytkownika do usunięcia
+        // TUTOR
         $tutorSchedule = TutorAvailability::find($id);
 
-        // Usuń użytkownika
+        
         $tutorSchedule->delete();
 
         return redirect('your-schedule')->with('success', 'Termin został pomyślnie usunięty.');
     }
+
+    public function index_user()
+    {
+        // TUTOR
+        $id = Auth::user()->id;
+
+
+        $userSchedules = TutorAvailability::with('tutor') 
+        ->where('user_id', auth()->user()->id)
+        ->get();
+        // dd($userSchedules);
+
+        return view('your-schedule-user', compact('userSchedules'));
+    }
+
+    public function delete_user($id)
+{
+    $userSchedule = TutorAvailability::find($id);
+
+    if ($userSchedule) {
+        TutorAvailability::where('id', $id)
+            ->update([
+                'user_id' => null,
+                'is_available' => 1,
+            ]);
+
+        return redirect('your-schedule-user')->with('success', 'Termin został pomyślnie usunięty.');
+    } else {
+        return redirect('your-schedule-user')->with('error', 'Nie można odnaleźć danego terminu.');
+    }
+}
 }

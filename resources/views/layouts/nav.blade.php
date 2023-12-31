@@ -123,6 +123,8 @@
                                 <span class="hide-menu">Znajdź korepetytora</span>
                             </a>
                         </li>
+                        <!-- TUTOR -->
+                        @can('isTutor')
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/tutor-availability"
                                 aria-expanded="false">
@@ -130,7 +132,9 @@
                                 <span class="hide-menu">Dodaj termin korepetycji</span>
                             </a>
                         </li>
+                        @endcan
                         <!-- TUTOR -->
+                        @can('isTutor')
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/your-schedule"
                                 aria-expanded="false">
@@ -138,6 +142,17 @@
                                 <span class="hide-menu">Twój harmonogram</span>
                             </a>
                         </li>
+                        @endcan
+                        <!-- USER -->
+                        @can('isUser')
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/your-schedule-user"
+                                aria-expanded="false">
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <span class="hide-menu">Twój harmonogram</span>
+                            </a>
+                        </li>
+                        @endcan
                         <li class="text-center p-20 upgrade-btn">
                             
                             <a class="btn d-grid btn-danger text-white" href="{{ route('logout') }}"

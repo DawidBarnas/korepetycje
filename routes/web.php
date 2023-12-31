@@ -33,17 +33,21 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/tutor-profile/{id}', [TutorController::class, 'showProfile'])->name('showTutorProfile');
     Route::post('/rate-tutor/{id}', [TutorController::class, 'rateTutor'])->name('rate.tutor');
     Route::get('/tutor-calendar/{id}', [TutorCalendarController::class, 'show'])->name('showTutorCalendar');
-    Route::get('/your-schedule', [YourScheduleController::class, 'index']);
     Route::post('/save-selected-date-time', [TutorCalendarController::class, 'saveSelectedDateTime'])->name('saveSelectedDateTime');
     Route::post('/save-selected-datetime', [TutorCalendarController::class, 'saveSelectedDateTime'])->name('save-selected-datetime');
 
+    Route::middleware(['can:isUser'])->group(function () {
+        Route::get('/your-schedule-user', [YourScheduleController::class, 'index_user']);
+        Route::get('tutorScheduleUser/delete/{id}', [YourScheduleController::class, 'delete_user']);
+    });
 
 
     Route::middleware(['can:isTutor'])->group(function () {
         Route::post('/tutor/availability', [TutorAvailabilityController::class, 'checkAvailability'])->name('tutor.availability');
         Route::get('/tutor-availability', [TutorAvailabilityController::class, 'index']);
         Route::get('tutorSchedule/delete/{id}', [YourScheduleController::class, 'delete']);
-        
+        Route::get('/your-schedule', [YourScheduleController::class, 'index']);
+
     });
 
     Route::middleware(['can:isAdmin'])->group(function() {
