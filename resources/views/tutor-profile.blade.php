@@ -35,9 +35,11 @@
                                             
                                     </tbody>
                                 </table>
+                                @can('isUser')
                                 <a href="{{ route('showTutorCalendar', $tutor->id) }}">
                                     <button type="button" class="btn btn-primary">Wyświetl Dostępne terminy</button>
                                 </a>
+                                @endcan
                 </div>
             </div>
         
@@ -45,7 +47,7 @@
         <div class="white-box">
             
             
-
+        @can('isUser')
             @if (!$hasRated)
                 <!-- Dodaj warunek, aby sprawdzić, czy użytkownik jeszcze nie ocenił tego korepetytora -->
                 <form action="{{ route('rate.tutor', ['id' => $tutor->id]) }}" method="post">
@@ -69,7 +71,7 @@
             @else
                 <p>Już oceniłeś(aś) tego korepetytora.</p>
             @endif
-
+        @endcan
 
             <div class="row d-flex ">
                 <div class="col-md-12 col-lg-10">

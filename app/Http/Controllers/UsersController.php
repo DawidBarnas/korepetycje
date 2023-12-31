@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Rating;
+use App\Models\TutorAvailability;
 
 class UsersController extends Controller
 {
@@ -35,7 +36,9 @@ class UsersController extends Controller
         } elseif ($user->role === 'user') {
             // Usuń powiązane oceny, gdzie user_id równa się ID usuwanego użytkownika
             Rating::where('user_id', $user->id)->delete();
+            TutorAvailability::where('user_id', $id)->update(['is_available' => 1,]);
         }
+        
 
         // Usuń użytkownika
         $user->delete();
