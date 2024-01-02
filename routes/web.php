@@ -9,6 +9,8 @@ use App\Http\Controllers\TutorController;
 use App\Http\Controllers\TutorAvailabilityController;
 use App\Http\Controllers\TutorCalendarController;
 use App\Http\Controllers\YourScheduleController;
+use App\Http\Controllers\HomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +35,8 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/tutor-profile/{id}', [TutorController::class, 'showProfile'])->name('showTutorProfile');
     Route::post('/rate-tutor/{id}', [TutorController::class, 'rateTutor'])->name('rate.tutor');
     Route::get('/tutor-calendar/{id}', [TutorCalendarController::class, 'show'])->name('showTutorCalendar');
-    
+    Route::get('/find-tutor', [FindTutorController::class, 'index'])->name('findTutor');
+
 
     Route::middleware(['can:isUser'])->group(function () {
         Route::get('/your-schedule-user', [YourScheduleController::class, 'index_user']);
@@ -48,6 +51,7 @@ Route::middleware(['auth'])->group(function() {
         Route::get('/tutor-availability', [TutorAvailabilityController::class, 'index']);
         Route::get('tutorSchedule/delete/{id}', [YourScheduleController::class, 'delete']);
         Route::get('/your-schedule', [YourScheduleController::class, 'index']);
+        Route::post('/save-selected-subject', [HomeController::class, 'save'])->name('saveSelectedSubject');
 
     });
 

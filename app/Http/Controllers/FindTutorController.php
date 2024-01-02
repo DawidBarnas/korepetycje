@@ -11,10 +11,22 @@ class FindTutorController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tutors = DB::table('users')->where('role', 'tutor')->get();
-        $tutors = User::where('role', 'tutor')->paginate(8);
+        $search = $request->input('search');
+
+        $tutors = User::with('subjects')
+            ->where('role', 'tutor')
+            ->where(function ($query) use ($search) {
+                $query->where('name', 'like', "%$search%")
+                    ->orWhere('surname', 'like', "%$search%")
+                    ->orWhere('email', 'like', "%$search%")
+                    ->orWhereHas('subjects', function ($query) use ($search) {
+                        $query->where('name', 'like', "%$search%");
+                    });
+            })
+            ->paginate(8);
+
         return view('find-tutor', compact('tutors'));
     }
 
