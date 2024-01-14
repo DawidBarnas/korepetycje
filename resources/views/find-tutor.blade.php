@@ -18,7 +18,6 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th class="border-top-0">Id</th>
                             <th class="border-top-0">Imie</th>
                             <th class="border-top-0">Nazwisko</th>
                             <th class="border-top-0">E-mail</th>
@@ -29,7 +28,6 @@
                     <tbody>
                         @foreach($tutors as $tutor)
                             <tr>
-                                <td>{{ $tutor->id }}</td>
                                 <td>{{ $tutor->name }}</td>
                                 <td>{{ $tutor->surname }}</td>
                                 <td>{{ $tutor->email }}</td>

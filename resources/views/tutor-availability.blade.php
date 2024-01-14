@@ -136,17 +136,14 @@
     var hourValue = button.value;
 
     if (selectedHours.includes(hourValue)) {
-        // Remove hour if already selected
         selectedHours = selectedHours.filter(function (value) {
             return value !== hourValue;
         });
         button.classList.remove('selected');
     } else {
-        // Add each hour separately
         var hoursToAdd = hourValue.split(',');
         selectedHours = selectedHours.concat(hoursToAdd);
 
-        // Add styling for each hour button
         hoursToAdd.forEach(function (hour) {
             var hourButton = document.querySelector('button[value="' + hour + '"]');
             if (hourButton) {
@@ -159,11 +156,9 @@
 }
 
 function updateSelectedHoursInput() {
-    // Update hidden input with selected hours as an array
     document.getElementById('selectedHoursInput').value = JSON.stringify(selectedHours);
 }
 
-    // Dodanie sprawdzenia przed wysłaniem formularza
     document.getElementById('availabilityForm').addEventListener('submit', function(event) {
         var selectedDate = document.getElementById('selectedDateInput').value;
 

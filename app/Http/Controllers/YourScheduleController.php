@@ -37,7 +37,7 @@ class YourScheduleController extends Controller
 
     public function index_user()
     {
-        // TUTOR
+        // USER
         $id = Auth::user()->id;
 
 

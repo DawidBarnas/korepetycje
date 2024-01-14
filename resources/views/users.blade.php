@@ -7,13 +7,7 @@
                         <div class="white-box">
                             <div class="d-md-flex mb-3">
                                 <h3 class="box-title mb-0">Użytkownicy</h3>
-                                <div class="col-md-3 col-sm-4 col-xs-6 ms-auto">
-                                    <select class="form-select shadow-none row border-top">
-                                        <option>Wszyscy</option>
-                                        <option>Użytkownicy</option>
-                                        <option>Korepetytorzy</option>
-                                    </select>
-                                </div>
+                                
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-hover">

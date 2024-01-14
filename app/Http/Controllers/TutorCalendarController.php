@@ -29,16 +29,15 @@ class TutorCalendarController extends Controller
 
 public function saveSelectedDateTime(Request $request)
 {
-    // Pobierz dane z formularza
+    //  dane z formularza
     $selectedDate = $request->input('selectedDate');
     $selectedHour = $request->input('selectedHour');
     $tutorId = $request->input('tutorId');
     $id = auth()->user()->id;
-    // dd($selectedDate);
-    // Utwórz obiekt Carbon dla daty i godziny
+    // obiekt Carbon dla daty i godziny
     $dateTime = \Carbon\Carbon::parse($selectedDate . ' ' . $selectedHour);
 
-    // Zaktualizuj odpowiedni rekord w tabeli TutorAvailability
+    // aktualizacja odpowiednich rekordow w tabeli TutorAvailability
     TutorAvailability::where('date', $dateTime->format('Y-m-d'))
         ->where('hour', $dateTime->format('H:i'))
         ->where('tutor_id', $tutorId)
@@ -47,9 +46,8 @@ public function saveSelectedDateTime(Request $request)
             'user_id' => $id
         ]);
 
-    // Dodaj kod obsługi, który chcesz wykonać po zapisaniu wybranej daty i godziny
 
-    // Przekieruj na odpowiednią stronę
+    // przekierowanie na odpowiednią stronę
     return redirect()->back()->with('success', 'Wybrana data i godzina zostały zapisane.');
 }
 

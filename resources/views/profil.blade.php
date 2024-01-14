@@ -32,7 +32,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Utworzono</td>
-                                                <td>{{ $userData->created_at }}</td>
+                                                <td>{{ $userData->created_at->format('d.m.Y H:i') }}</td>
                                             </tr>
                                             
                                     </tbody>

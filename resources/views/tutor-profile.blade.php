@@ -30,7 +30,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Utworzono</td>
-                                                <td>{{ $tutor->created_at }}</td>
+                                                <td>{{ $tutor->created_at->format('d.m.Y H:i') }}</td>
                                             </tr>
                                             
                                     </tbody>
@@ -89,9 +89,9 @@
                                             src="{{ asset('plugins/images/users/1.jpg') }}"
                                             alt="avatar" width="60" height="60" />
                                         <div>
-                                            <h6 class="fw-bold mb-1">{{ $comment->user->name }}  wystawił ocenę: {{ $comment->rating }}</h6>
+                                            <h6 class="fw-bold mb-1">{{ $comment->user->name }}  wystawił/a ocenę: {{ $comment->rating }}</h6>
                                             <div class="d-flex align-items-center mb-3">
-                                                <p class="mb-0">{{ $comment->created_at->format('F d, Y') }}</p>
+                                                <p class="mb-0">{{ $comment->created_at->format('d.m.Y') }}</p>
                                             </div>
                                             <p class="mb-0">{{ $comment->comment }}</p>
                                             </br>

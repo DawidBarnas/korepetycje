@@ -11,10 +11,10 @@ class TutorController extends Controller
     public function showProfile($id)
     {
         $tutor = User::findOrFail($id);
-        $ratings = $tutor->ratings; // Użyj relacji, aby pobrać oceny tego korepetytora
+        $ratings = $tutor->ratings; // Użycie relacji, aby pobrać oceny tego korepetytora
         $comments = Rating::where('tutor_id', $id)->get();
 
-        // Sprawdź, czy użytkownik już ocenił tego korepetytora
+        // Sprawdenie, czy użytkownik już ocenił tego korepetytora
         $hasRated = Rating::where('tutor_id', $id)
             ->where('user_id', auth()->user()->id)
             ->exists();
